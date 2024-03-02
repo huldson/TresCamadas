@@ -1,0 +1,70 @@
+﻿@model Business.model.DtoCliente
+
+@{
+    ViewData["Title"] = "Listar";
+}
+
+<h1>Listar Endereços</h1>
+
+<p>
+   
+</p>
+
+<form method="get" action="@Url.Action("ListarEnderecos")">
+        <input type="text" name="cpf" placeholder="Buscar por CPF" />
+    <button class="btn btn-primary" type="submit">Buscar</button>
+        </form>
+    <tr>
+    <th>
+      Nome:  @Html.DisplayFor(modelItem => Model.Nome)
+        
+    </th>
+    <th>
+    CPF:  @Html.DisplayFor(modelItem => Model.CPF)
+    </th>
+
+<table class="table">
+    <thead>
+        <tr>           
+            <th>
+                Rua
+            </th>
+            <th>
+                Bairro
+            </th>
+            <th>
+                Cidade
+            </th>
+            <th>
+                Estado
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model!=null) {
+            @foreach (var item in Model.Enderecos) {
+                <tr>
+                   
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Rua)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Bairro)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Cidade)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Estado)
+                    </td>
+                    <td>
+                            @Html.ActionLink("Editar", "Editar", new {  id=item.Id, rua=item.Rua, cidade=item.Cidade,bairro=item.Bairro, Estado=item.Estado,ClinteId=item.ClienteId }) |
+                            @Html.ActionLink("Deletar", "Deletar",new {id=item.Id,CPF=Model.CPF})
+                    </td>
+                </tr>
+            }
+
+        }
+    </tbody>
+</table>
