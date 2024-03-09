@@ -11,8 +11,11 @@ namespace Business
     public interface IServices
     {
         public void Salvar(DtoCliente cliente);
+
         public DtoCliente RetornarLista(string cpf);
+
         public void Alterar(DtoEndereco dtoEndereco);
+
         public void Deletar(int id);
     }
 }
