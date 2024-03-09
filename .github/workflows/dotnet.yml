@@ -20,9 +20,9 @@ jobs:
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 6.0.x
-    - name: Install dependencies
+    - name: Instalando dependencias
       run: dotnet restore
-    - name: Build
+    - name: rodando o projeto
       run: dotnet build --no-restore
-    - name: Test
+    - name: testando
       run: dotnet test --no-build --verbosity normal
